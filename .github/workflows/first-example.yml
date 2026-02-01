@@ -8,9 +8,23 @@ jobs:
         steps: # Steps of a job always run sequentially
             - name: Welcome message
               run: echo "My first actions job"
-            - name: List File # This will fail without checking out the code
-              run: ls -lah 
-            - name: Read file
-              run: cat README.md
+            - name: List File
+              run: ls -lah
+            - name: Checkout code
+              uses: actions/checkout@main
+              # uses: actions/checkout@(v3.6.0 - Git tag)
+              # uses: actions/checkout@(a824008085750b8e136effc585c3cd6082bd575f - Commit SHA)
 
+            - name: Read file
+              run: cat README.md # This will fail without checking out the code
+
+
+# GitHub Actions are pre-built, reusable automation components designed to help you automate software development 
+# workflows—such as CI/CD, testing, and deployment. 
+# You choose between official Actions from GitHub, community-created Actions, or build your own;
+# You can share and reuse automation logic across repositories with ease.
+# The GitHub Marketplace is the primary hub for finding Actions contributed by GitHub and the wider community. 
+# You’ll find hundreds of Actions covering tasks like code analysis, Docker builds, notifications, and more.
+# Verified Actions: Marked with a ✅ badge to indicate GitHub has vetted the creator as a partner.
+# Community Actions: Created by individual contributors or organizations without the verification badge.
 
