@@ -1,4 +1,4 @@
-name: My first workflow # name of the workflow
+name: my_first_workflow # name of the workflow
 
 on: push # Trigger
 
@@ -9,12 +9,14 @@ jobs:
             - name: Welcome message
               run: echo "My first actions job"
             - name: List File
-              run: ls -lah
+              run: ls -lah # Runs a shell command
             - name: Checkout code
-              uses: actions/checkout@main
+              # uses: actions/checkout@main # Uses invokes an action
               # uses: actions/checkout@(v3.6.0 - Git tag)
               # uses: actions/checkout@(a824008085750b8e136effc585c3cd6082bd575f - Commit SHA)
-
+              uses: actions/checkout@v6
+              with:
+                ref: 'main'
             - name: Read file
               run: cat README.md # This will fail without checking out the code
 
@@ -27,4 +29,5 @@ jobs:
 # You’ll find hundreds of Actions covering tasks like code analysis, Docker builds, notifications, and more.
 # Verified Actions: Marked with a ✅ badge to indicate GitHub has vetted the creator as a partner.
 # Community Actions: Created by individual contributors or organizations without the verification badge.
+
 
