@@ -6,20 +6,35 @@ jobs:
     ascii_artwork:
         runs-on: ubuntu-latest
         steps:
-            - name: Install Cowsay
-              run: |
-                sudo apt-get update
-                sudo apt-get install cowsay -y
+            # - name: Install Cowsay
+            #   run: |
+            #     sudo apt-get update
+            #     sudo apt-get install cowsay -y
 
-            - name: Generate ASCII art
-              run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
+            # - name: Generate ASCII art
+            #   run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
 
-            - name: Verify Output
-              run: grep -i "dragon" dragon.txt
+            # - name: Verify Output
+            #   run: grep -i "dragon" dragon.txt
 
-            - name: Display Artwork
-              run: cat dragon.txt
+            # - name: Display Artwork
+            #   run: cat dragon.txt
 
-            - name: List workspace alias
-              run: ls -ltra
+            # - name: List workspace alias
+            #   run: ls -ltra
               
+# You can execute shell scripts in GitHub Actions workflows to simplify command management and improve readability
+# Add a file named ascii-script.sh which does all of the above actions
+
+            - name: checkout repo
+              uses: actions/checkout@v4
+
+            - name: List current files
+              run: |
+                  pwd
+                  ls -ltra
+
+            - name: Run ASCII shell script
+              run: |
+                  chmod 700 ./ascii-script.sh
+                  run ./ascii-script.sh
