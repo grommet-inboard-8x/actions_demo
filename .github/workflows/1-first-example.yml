@@ -8,7 +8,7 @@ jobs:
         steps: # Steps of a job always run sequentially
             - name: Welcome message
               run: echo "My first actions job"
-              
+
             - name: Checkout code
               # uses: actions/checkout@main # Uses invokes an action
               # uses: actions/checkout@(v3.6.0 - Git tag)
@@ -47,11 +47,11 @@ jobs:
                 ls -lah
                 cat README.md
 
-    # Using a custom tool cosway to generate ASCII art
-            - name: Install Cosway
+    # Using a custom tool Cowsay to generate ASCII art
+            - name: Install Cowsay
               run: |
                 sudo apt-get update
-                sudo apt-get install cosway
+                sudo apt-get install cowsay -y
 
             - name: Generate ASCII art
-              run: cosway -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
+              run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
