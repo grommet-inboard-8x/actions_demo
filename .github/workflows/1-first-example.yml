@@ -8,8 +8,7 @@ jobs:
         steps: # Steps of a job always run sequentially
             - name: Welcome message
               run: echo "My first actions job"
-            - name: List File
-              run: ls -lah # Runs a shell command
+              
             - name: Checkout code
               # uses: actions/checkout@main # Uses invokes an action
               # uses: actions/checkout@(v3.6.0 - Git tag)
@@ -17,6 +16,10 @@ jobs:
               uses: actions/checkout@v6
               with:
                 ref: 'main'
+
+            - name: List File
+              run: ls -lah # Runs a shell command
+
             - name: Read file
               run: cat README.md # This will fail without checking out the code
 
@@ -31,3 +34,24 @@ jobs:
 # Community Actions: Created by individual contributors or organizations without the verification badge.
 
 
+# Combine multiple shell commands into a single step
+# Integrating a third-party CLI tool (cowsay).
+
+# Combining Multiple Commands in One Step
+# You can collapse several shell commands under a single run key by using a multiline pipe (|). 
+# Each command executes in sequence on the same virtual environment.
+
+            - name: Combined commands example
+              run: |
+                echo "Welcome to GH Actions"
+                ls -lah
+                cat README.md
+
+    # Using a custom tool cosway to generate ASCII art
+            - name: Install Cosway
+              run: |
+                sudo apt-get update
+                sudo apt-get install cosway
+
+            - name: Generate ASCII art
+              run: cosway -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
